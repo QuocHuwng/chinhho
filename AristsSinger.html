@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Nghệ Sĩ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/AristsSinger.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="https://thumbs.dreamstime.com/z/music-logo-icon-vector-design-illustration-template-symbol-sound-element-musical-audio-modern-graphic-creative-abstract-company-170538718.jpg"
+                    alt="Music Admin logo">
+            </div>
+            <nav>
+                <a href="./song.html">
+                    <span class="icon">♪</span>
+                    <span>Bài hát</span>
+                </a>
+                <a href="./Album-management.html">
+                    <span class="icon">💿</span>
+                    <span>Album</span>
+                </a>
+                <a href="./AristsSinger.html" class="active" aria-current="page">
+                    <span class="icon">👤</span>
+                    <span>Nghệ sĩ</span>
+                </a>
+                <a href="#">
+                    <span class="icon">📜</span>
+                    <span>Thể loại</span>
+                </a>
+                <a href="#">
+                    <span class="icon">📊</span>
+                    <span>Thống kê</span>
+                </a>
+                <a href="./users.html">
+                    <span class="icon">⚙️</span>
+                    <span>Quản lí người dùng</span>
+                </a>
+            </nav>
+            <div class="user-info">
+                <img src="https://storage.googleapis.com/a1aa/image/c2210d25-037d-48e4-4faf-923559ccb7b3.jpg"
+                    alt="User avatar">
+                <div class="user-details">
+                    <p class="name">Admin Quản Lý</p>
+                    <p>admin@musicapp.com</p>
+                </div>
+                <button aria-label="Logout" title="Logout">↩</button>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Quản Lý Nghệ Sĩ</h1>
+            <!-- Featured Artists Section -->
+            <section class="featured-section">
+                <h2>Nghệ sĩ Nổi bật</h2>
+                <div class="featured-artists" id="featuredArtists"></div>
+            </section>
+            <!-- Artist Form -->
+            <form id="artistForm">
+                <div class="form-group">
+                    <label>Tên nghệ sĩ</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="genre">Thể loại</label>
+                    <input type="text" id="genre" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthYear">Năm sinh</label>
+                    <input type="number" id="birthYear" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">URL ảnh</label>
+                    <input type="url" id="image">
+                </div>
+                <div class="button-group">
+                    <button type="submit" id="addButton">Thêm</button>
+                    <button type="submit" id="updateButton" class="hidden">Cập nhật</button>
+                    <button type="button" id="cancelButton" class="hidden">Hủy</button>
+                </div>
+            </form>
+            <!-- Artist Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ảnh</th>
+                        <th>Tên</th>
+                        <th>Thể loại</th>
+                        <th>Năm sinh</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="artistTable"></tbody>
+            </table>
+            <!-- Pagination -->
+            <div class="pagination">
+                <button id="prevPage">Trang trước</button>
+                <button id="nextPage">Trang sau</button>
+            </div>
+            <!-- Notification -->
+            <div id="notification"></div>
+        </main>
+        <!-- Thông báo khi xóa -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <p>Bạn có chắc muốn xóa nghệ sĩ này?</p>
+                <button id="confirmDelete">Xóa</button>
+                <button id="cancelDelete">Hủy</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/AristsSinger.js"></script>
+</body>
+
+</html>

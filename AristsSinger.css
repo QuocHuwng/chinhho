@@ -1,0 +1,460 @@
+   /* General styles for the whole page */
+   body {
+       font-family: 'Poppins', Arial, sans-serif;
+       background-color: #f9fafb;
+       margin: 0;
+       padding: 0;
+       display: flex;
+       height: 100vh;
+       width: 100vw;
+   }
+
+   /* Main container for sidebar and content */
+   .container {
+       width: 100vw;
+       height: 100vh;
+       display: flex;
+   }
+
+   /* Sidebar styles */
+   .sidebar {
+       width: 220px;
+       border-right: 1px solid #e5e7eb;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       background-color: #fff;
+   }
+
+   .sidebar .logo {
+       padding: 20px;
+   }
+
+   .sidebar .logo img {
+       width: 150px;
+       height: 160px;
+   }
+
+   .sidebar nav {
+       margin-top: 24px;
+       padding: 0 8px;
+   }
+
+   .sidebar nav a {
+       display: flex;
+       align-items: center;
+       gap: 12px;
+       padding: 8px 16px;
+       color: #4b5563;
+       text-decoration: none;
+       font-size: 14px;
+       border-radius: 4px;
+       margin-bottom: 8px;
+   }
+
+   .sidebar nav a:hover {
+       background-color: #f3f4f6;
+   }
+
+   .sidebar nav a.active {
+       background-color: #ffe6d9;
+       color: #d35400;
+   }
+
+   .sidebar nav a.active .icon {
+       color: #d35400;
+   }
+
+   .sidebar nav .icon {
+       font-size: 18px;
+       color: #6b7280;
+       aria-hidden: true;
+   }
+
+   .sidebar .user-info {
+       display: flex;
+       align-items: center;
+       gap: 12px;
+       padding: 16px;
+       border-top: 1px solid #e5e7eb;
+   }
+
+   .sidebar .user-info img {
+       width: 40px;
+       height: 40px;
+       border-radius: 50%;
+   }
+
+   .sidebar .user-info .user-details {
+       font-size: 12px;
+       color: #4b5563;
+   }
+
+   .sidebar .user-info .user-details p {
+       margin: 0;
+   }
+
+   .sidebar .user-info .user-details .name {
+       font-weight: 600;
+       color: #1f2a56;
+   }
+
+   .sidebar .user-info button {
+       margin-left: auto;
+       background: none;
+       border: none;
+       color: #6b7280;
+       cursor: pointer;
+       font-size: 18px;
+   }
+
+   .sidebar .user-info button:hover {
+       color: #1f2a56;
+   }
+
+   /* Main content styles */
+   .main-content {
+       flex: 1;
+       padding: 20px;
+       overflow-y: auto;
+   }
+
+   .main-content h1 {
+       font-size: 24px;
+       color: #1f2a56;
+       margin-bottom: 20px;
+   }
+
+   /* Featured Artists Section */
+   .featured-section {
+       margin-bottom: 30px;
+   }
+
+   .featured-section h2 {
+       font-size: 20px;
+       color: #1f2a56;
+       margin-bottom: 15px;
+   }
+
+   .featured-artists {
+       display: flex;
+       gap: 20px;
+       overflow-x: auto;
+       padding-bottom: 10px;
+   }
+
+   .featured-artist-card {
+       flex: 0 0 200px;
+       background-color: #fff;
+       border-radius: 8px;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       text-align: center;
+       padding: 15px;
+       transition: transform 0.3s;
+   }
+
+   .featured-artist-card:hover {
+       transform: translateY(-5px);
+   }
+
+   .featured-artist-card img {
+       width: 100px;
+       height: 100px;
+       border-radius: 50%;
+       object-fit: cover;
+       margin-bottom: 10px;
+   }
+
+   .featured-artist-card h3 {
+       font-size: 16px;
+       color: #1f2a56;
+       margin: 0 0 5px;
+   }
+
+   .featured-artist-card p {
+       font-size: 14px;
+       color: #6b7280;
+       margin: 0;
+   }
+
+   /* Form styles */
+   #artistForm {
+       background-color: #fff;
+       padding: 20px;
+       border-radius: 8px;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       margin-bottom: 20px;
+   }
+
+   #artistForm .form-group {
+       margin-bottom: 15px;
+   }
+
+   #artistForm label {
+       display: block;
+       font-weight: 600;
+       color: #4b5563;
+       margin-bottom: 5px;
+   }
+
+   #artistForm input {
+       width: 100%;
+       padding: 8px;
+       border: 1px solid #e5e7eb;
+       border-radius: 4px;
+       font-size: 14px;
+   }
+
+   #artistForm input:focus {
+       outline: none;
+       border-color: #d35400;
+   }
+
+   #artistForm .button-group {
+       display: flex;
+       gap: 10px;
+   }
+
+   #artistForm button {
+       padding: 8px 16px;
+       border: none;
+       border-radius: 4px;
+       cursor: pointer;
+       font-size: 14px;
+   }
+
+   #addButton {
+       background-color: #d35400;
+       color: #fff;
+   }
+
+   #updateButton,
+   #cancelButton {
+       background-color: #6b7280;
+       color: #fff;
+   }
+
+   #addButton:hover {
+       background-color: #e07b00;
+   }
+
+   #updateButton:hover,
+   #cancelButton:hover {
+       background-color: #4b5563;
+   }
+
+   .hidden {
+       display: none;
+   }
+
+   /* Table styles */
+   table {
+       width: 100%;
+       border-collapse: collapse;
+       background-color: #fff;
+       border-radius: 8px;
+       overflow: hidden;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   }
+
+   th,
+   td {
+       padding: 12px;
+       text-align: left;
+       border-bottom: 1px solid #e5e7eb;
+   }
+
+   th {
+       background-color: #f3f4f6;
+       font-weight: 600;
+       color: #1f2a56;
+   }
+
+   .artist-image {
+       width: 50px;
+       height: 50px;
+       border-radius: 50%;
+       object-fit: cover;
+   }
+
+   .edit-btn,
+   .delete-btn,
+   .feature-btn {
+       padding: 6px 12px;
+       border: none;
+       border-radius: 4px;
+       cursor: pointer;
+       font-size: 12px;
+       margin-right: 5px;
+   }
+
+   .edit-btn {
+       background-color: #3498db;
+       color: #fff;
+   }
+
+   .delete-btn {
+       background-color: #e74c3c;
+       color: #fff;
+   }
+
+   .feature-btn {
+       background-color: #2ecc71;
+       color: #fff;
+   }
+
+   .feature-btn.active {
+       background-color: #e74c3c;
+   }
+
+   .edit-btn:hover {
+       background-color: #2980b9;
+   }
+
+   .delete-btn:hover {
+       background-color: #c0392b;
+   }
+
+   .feature-btn:hover {
+       background-color: #27ae60;
+   }
+
+   .feature-btn.active:hover {
+       background-color: #c0392b;
+   }
+
+   /* Pagination styles */
+   .pagination {
+       display: flex;
+       justify-content: center;
+       gap: 10px;
+       margin-top: 20px;
+   }
+
+   .pagination button {
+       padding: 8px 16px;
+       border: none;
+       border-radius: 4px;
+       background-color: #d35400;
+       color: #fff;
+       cursor: pointer;
+   }
+
+   .pagination button:disabled {
+       background-color: #e5e7eb;
+       cursor: not-allowed;
+   }
+
+   .pagination button:hover:not(:disabled) {
+       background-color: #e07b00;
+   }
+
+   /* Notification styles */
+   #notification {
+       position: fixed;
+       top: 20px;
+       right: 20px;
+       padding: 10px 20px;
+       border-radius: 4px;
+       color: #fff;
+       opacity: 0;
+       transition: opacity 0.3s;
+   }
+
+   #notification.success {
+       background-color: #2ecc71;
+   }
+
+   #notification.show {
+       opacity: 1;
+   }
+
+   /* Responsive design */
+   @media (max-width: 768px) {
+       .sidebar {
+           width: 60px;
+       }
+
+       .sidebar .logo img {
+           width: 40px;
+           height: 40px;
+       }
+
+       .sidebar nav a span:not(.icon) {
+           display: none;
+       }
+
+       .sidebar .user-info .user-details {
+           display: none;
+       }
+
+       .main-content {
+           padding: 10px;
+       }
+
+       #artistForm {
+           padding: 10px;
+       }
+
+       .featured-artist-card {
+           flex: 0 0 150px;
+           padding: 10px;
+       }
+
+       .featured-artist-card img {
+           width: 80px;
+           height: 80px;
+       }
+
+       table {
+           font-size: 12px;
+       }
+
+       .artist-image {
+           width: 30px;
+           height: 30px;
+       }
+   }
+/* thông báo khi xóa */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.modal-content button {
+    padding: 8px 16px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#confirmDelete {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+#cancelDelete {
+    background-color: #ccc;
+}
