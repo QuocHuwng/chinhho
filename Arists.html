@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists</title>
+    <link rel="stylesheet" href="../css/Arists.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- ========== Sidebar ========== -->
+        <aside class="sidebar">
+            <a href="#" class="logo"><img src="../img/logo.png.png" alt=""></a>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#"><img src="../img/icon.svg fill.png" alt=""></a></li>
+                    <li><a href="#"><img src="../img/icon.svg fill (1).png" alt=""></a></li>
+                    <li class="active"><a href="#"><img src="../img/icon.svg fill (2).png" alt=""></a></li>
+                    <li><a href="#"><img src="../img/icon.svg fill (3).png" alt=""></a></li>
+                    <li><a href="#"><img src="../img/icon.svg fill (4).png" alt=""></a></li>
+                    <li><a href="#"><img src="../img/icon.svg fill (5).png" alt=""></a></li>
+                    <li><a href="#"><img src="../img/icon.svg fill (6).png" alt=""></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- ========== Main Content ========== -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search Music Here...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="trending-songs">
+                    <span>Trending Songs:</span> Dream your moments, Until I Met You, Give...
+                </div>
+                <div class="header-right">
+                    <div class="language-selector">
+                        Languages <img src="../img/Vector.png" alt="">
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="#" class="btn btn-secondary">Register</a>
+                        <a href="#" class="btn btn-primary">Login</a>
+                    </div>
+                </div>
+                <div class="header-right-mobile">
+                    <span class="mobile-user-icon"></span>
+                    <span class="mobile-notification-icon"></span>
+                    <button class="mobile-menu-toggle"></button>
+                </div>
+            </header>
+
+            <!-- Featured Artists Row (Scrollable) - Update images only -->
+            <section class="artist-section">
+                <div class="section-header">
+                    <h2>Featured Artists</h2>
+                    <div class="section-nav">
+                        <button><i class="fas fa-chevron-left"></i></button>
+                        <button><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="artist-row-scroll" id="featuredArtistList">
+                   
+                </div>
+            </section>
+
+            <!-- Featured Artists Grid - Update images and names -->
+            <section class="artist-section">
+                <div class="section-header">
+                    <h2>All Artist </h2>
+                </div>
+                <div class="artist-grid"  id="artistGrid">
+                   
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ========== Footer ========== -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <span>M</span>
+        </div>
+        <div class="footer-container">
+            <div class="footer-col footer-about">
+                <h3>Miraculous Music Station</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip.</p>
+            </div>
+            <div class="footer-col footer-download">
+                <h3>Download Our App</h3>
+                <p>Go Mobile with our app. Listen to your favourite songs at just one click. Download Now!</p>
+                <div class="app-buttons">
+                    <a href="#"><img src="../img/google_play.jpg.png" alt="Get it on Google Play"></a>
+                    <a href="#"><img src="../img/app_store.jpg.png" alt="Download on the App Store"></a>
+                    <a href="#"><img src="../img/windows.jpg.png" alt="Get it on Windows Store"></a>
+                </div>
+            </div>
+            <div class="footer-col footer-subscribe">
+                <h3>Subscribe</h3>
+                <p>Subscribe to our newsletter and get latest updates and offers.</p>
+                <form class="subscribe-form">
+                    <input type="text" placeholder="Enter Your Name" required>
+                    <input type="email" placeholder="Enter Your Email" required>
+                    <button type="submit" class="btn btn-primary">Sign Me Up</button>
+                </form>
+            </div>
+            <div class="footer-col footer-contact">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <p><img src="../img/phone.svg.png" alt=""><span>Call Us:<br>(+1) 300-555-0176, (+1) 5005-5501</span>
+                    </p>
+                    <p><img src="../img/message.svg fill.png" alt=""><span>Email Us:<br><a
+                                href="mailto:demo@email.com">demo@email.com</a><br><a
+                                href="mailto:dummy@email.com">dummy@email.com</a></span></p>
+                    <p><img src="../img/add.svg.png" alt=""><span>Walk In:<br>598 Old House Drive, London</span></p>
+                </div>
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" title="Facebook"><img src="../img/facebook.png" alt=""></a>
+                    <a href="#" title="Twitter"><img src="../img/twitter.png" alt=""></a>
+                    <a href="#" title="LinkedIn"><img src="../img/in.png" alt=""></a>
+                    <a href="#" title="Google Plus"><img src="../img/G+.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            Copyright © 2020 The Miraculous Music Template - All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="../js/Arists.js"></script>
+</body>
+
+</html>

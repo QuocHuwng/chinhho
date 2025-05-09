@@ -1,0 +1,1028 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Basic Reset & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Example Font */
+    background-color: #0b111c;
+    /* Darker blue background */
+    color: #e0e0e0;
+    /* Light grey text */
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Layout */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    /* Ensure it takes full height */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 70px;
+    /* Narrow width */
+    background-color: #111827;
+    /* Slightly lighter dark blue */
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    /* Fixed position */
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 100;
+    transition: transform 0.3s ease;
+    /* Add transition for potential hiding */
+}
+
+.sidebar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #38bdf8;
+    /* Bright teal/cyan */
+    margin-bottom: 30px;
+    background-color: #1f2937;
+    /* Background for logo circle */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.sidebar .logo img {
+    /* Ensure logo image fits */
+    max-width: 80%;
+    max-height: 80%;
+}
+
+
+.sidebar-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    /* Reduced gap slightly */
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    /* Slightly smaller */
+    height: 40px;
+    /* Slightly smaller */
+    color: #9ca3af;
+    /* Icon color */
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-nav li a img {
+    /* Ensure icons scale */
+    max-height: 20px;
+    max-width: 20px;
+}
+
+.sidebar-nav li a:hover {
+    background-color: #1f2937;
+    /* Darker background on hover */
+    color: #e0e0e0;
+}
+
+.sidebar-nav li.active a {
+    background-color: #38bdf8;
+    /* Active background color */
+    color: #ffffff;
+    /* White icon on active */
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    padding: 25px 30px;
+    margin-left: 70px;
+    /* Offset by sidebar width */
+    padding-bottom: 50px;
+    /* Space above footer */
+    transition: margin-left 0.3s ease;
+    /* Add transition */
+    width: calc(100% - 70px);
+    /* Ensure main content takes up remaining width */
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Reduced gap */
+    margin-bottom: 30px;
+    flex-wrap: nowrap;
+    /* Prevent wrapping by default */
+    width: 100%;
+}
+
+.search-bar {
+    display: flex;
+    flex-grow: 1;
+    /* Takes up most space */
+    max-width: 350px;
+    /* Adjust max width */
+    background-color: #1f2937;
+    /* Input background */
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 8px 15px;
+    /* Adjusted padding */
+    border: none;
+    background: none;
+    color: #e0e0e0;
+    outline: none;
+    font-size: 13px;
+    /* Adjusted font size */
+}
+
+.search-bar input::placeholder {
+    color: #6b7280;
+}
+
+.search-bar button {
+    background-color: #38bdf8;
+    /* Button background */
+    color: #ffffff;
+    border: none;
+    padding: 0 18px;
+    /* Adjusted padding */
+    cursor: pointer;
+    font-size: 14px;
+    /* Adjusted font size */
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #0ea5e9;
+    /* Darker teal */
+}
+
+.trending-songs {
+    font-size: 12px;
+    /* Slightly smaller */
+    color: #9ca3af;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 10;
+    /* Allow shrinking significantly */
+    min-width: 100px;
+    /* Prevent collapsing completely */
+}
+
+.trending-songs span {
+    font-weight: 500;
+    color: #e0e0e0;
+    margin-right: 5px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Reduced gap */
+    margin-left: auto;
+    /* Push to the right */
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* Reduced gap */
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 13px;
+    /* Adjusted font size */
+}
+
+.language-selector img {
+    /* Style the down arrow */
+    height: 8px;
+    width: auto;
+}
+
+
+.auth-buttons {
+    display: flex;
+    gap: 8px;
+    /* Reduced gap */
+}
+
+/* Button Styles */
+.btn {
+    padding: 7px 15px;
+    /* Adjusted padding */
+    border-radius: 20px;
+    /* Rounded buttons */
+    font-size: 12px;
+    /* Adjusted font size */
+    font-weight: 500;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+    /* Prevent wrapping */
+}
+
+.btn-primary {
+    background-color: #38bdf8;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0ea5e9;
+}
+
+.btn-secondary {
+    background-color: #38bdf8;
+    /* Changed to match login */
+    color: #ffffff;
+    /* Changed to match login */
+    border-color: #38bdf8;
+    /* Match background */
+}
+
+.btn-secondary:hover {
+    background-color: #0ea5e9;
+}
+
+/* Placeholder for Mobile Menu Icon */
+.mobile-menu-toggle {
+    display: none;
+    /* Hidden by default */
+    background: none;
+    border: none;
+    color: #cbd5e1;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Artist Sections */
+.artist-section {
+    margin-bottom: 30px;
+    /* Reduced margin */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    /* Adjusted font size */
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* General Section Nav Style */
+.section-nav {
+    display: flex;
+    /* Use flex for alignment */
+    gap: 8px;
+    /* Space between buttons */
+}
+
+.section-nav button {
+    background: none;
+    border: 1px solid #374151;
+    color: #9ca3af;
+    width: 28px;
+    /* Smaller buttons */
+    height: 28px;
+    /* Smaller buttons */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 12px;
+    /* Smaller icons */
+    display: inline-flex;
+    /* Align icon */
+    align-items: center;
+    justify-content: center;
+}
+
+.section-nav button:hover {
+    background-color: #1f2937;
+    color: #e0e0e0;
+}
+
+/* View More Link (assuming it's an 'a' tag in section-header) */
+.section-header a.view-more {
+    font-size: 13px;
+    color: #9ca3af;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.section-header a.view-more:hover {
+    color: #e0e0e0;
+}
+
+
+/* Artist Row (Scrollable) */
+.artist-row-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+    /* Reduced space for scrollbar */
+    margin-left: -5px;
+    /* Pull slightly left */
+    margin-right: -5px;
+    /* Pull slightly right */
+    /* Hide scrollbar visually */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.artist-row-scroll::-webkit-scrollbar {
+    /* Chrome, Safari, Opera */
+    display: none;
+}
+
+.artist-card-row {
+    display: inline-block;
+    width: 180px;
+    /* Default width */
+    margin-left: 5px;
+    /* Spacing between cards */
+    margin-right: 5px;
+    /* Spacing between cards */
+    background-color: transparent;
+    /* Make card bg transparent */
+    border-radius: 10px;
+    overflow: hidden;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+/* Artist Grid */
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    /* Default grid columns */
+    gap: 20px;
+}
+
+.artist-card-grid {
+    background-color: transparent;
+    /* Card background transparent */
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.artist-card-grid.active {
+    /* Active state not shown in target image, remove if not needed */
+    /* border-color: #f97316; */
+}
+
+/* Common Artist Card Styles */
+.artist-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Make it square */
+    overflow: hidden;
+    border-radius: 8px;
+    /* Rounded corners for image */
+    margin-bottom: 8px;
+    /* Space between image and text */
+}
+
+.artist-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.artist-card-row:hover img,
+.artist-card-grid:hover img {
+    transform: scale(1.05);
+}
+
+.artist-info {
+    padding: 0 5px;
+    /* Reduced padding */
+    text-align: left;
+    /* Align text left */
+}
+
+.artist-name {
+    font-size: 14px;
+    /* Slightly larger name */
+    font-weight: 500;
+    color: #e0e0e0;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    /* Adjust line height */
+}
+
+/* Optional: Subtitle/Description (if added later) */
+.artist-subtitle {
+    font-size: 11px;
+    color: #9ca3af;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ========== Footer ========== */
+/* Footer hidden in the provided mobile views, optionally hide */
+/* .footer { display: none; } */
+/* Or style it if it should be present */
+.footer {
+    background-color: #111827;
+    /* Same as sidebar */
+    padding: 40px 0 20px 0;
+    /* Adjusted padding */
+    color: #9ca3af;
+    /* Footer text color */
+    margin-top: auto;
+    /* Pushes footer down */
+}
+
+.footer-logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.footer-logo span {
+    font-size: 32px;
+    /* Adjusted size */
+    font-weight: bold;
+    color: #38bdf8;
+    background-color: #1f2937;
+    width: 55px;
+    /* Adjusted size */
+    height: 55px;
+    /* Adjusted size */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Four columns */
+    gap: 30px;
+}
+
+.footer-col h3 {
+    color: #ffffff;
+    font-size: 15px;
+    /* Adjusted size */
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.footer-col p {
+    font-size: 12px;
+    /* Adjusted size */
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+/* Download App */
+.app-buttons a {
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-right: 5px;
+}
+
+.app-buttons img {
+    height: 35px;
+    /* Adjusted height */
+    width: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.app-buttons img:hover {
+    opacity: 1;
+}
+
+/* Subscribe */
+.subscribe-form input {
+    width: 100%;
+    padding: 8px 12px;
+    /* Adjusted padding */
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #374151;
+    color: #e0e0e0;
+    font-size: 12px;
+    /* Adjusted size */
+}
+
+.subscribe-form input::placeholder {
+    color: #9ca3af;
+}
+
+.subscribe-form button {
+    width: 100%;
+    padding: 8px 15px;
+    /* Match input padding */
+}
+
+/* Contact Us */
+.contact-info p {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    /* Reduced gap */
+    margin-bottom: 12px;
+}
+
+.contact-info img {
+    width: 24px;
+    /* chỉnh kích thước ảnh nhỏ lại */
+    height: 24px;
+    object-fit: contain;
+
+    flex-shrink: 0;
+    /* ngăn không cho ảnh co lại thêm */
+    margin-top: 4px;
+    /* để canh ảnh thẳng hàng với chữ */
+}
+
+.contact-info span {
+    font-size: 12px;
+    /* Adjusted size */
+}
+
+.contact-info a {
+    color: #9ca3af;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #38bdf8;
+}
+
+.contact-info img {
+    /* Style icons */
+    height: 30px;
+    width: 30px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    background-color: #3BC8E7;
+    color: white;
+    border-radius: 20%;
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: 15px;
+    /* Add margin */
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    /* Adjusted size */
+    height: 30px;
+    /* Adjusted size */
+    margin-right: 6px;
+    font-size: 13px;
+    /* Adjusted size */
+    color: #9ca3af;
+    border-radius: 20%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #3BC8E7;
+}
+
+.social-icons a img {
+    /* Style social images */
+    height: 14px;
+    width: auto;
+}
+
+.social-icons a:hover {
+    background-color: #20A7C4;
+    color: #ffffff;
+}
+
+/* Copyright */
+.footer-copyright {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #374151;
+    font-size: 11px;
+    /* Adjusted size */
+    color: #6b7280;
+}
+
+
+/* ========== Responsive Styles ========== */
+
+/* Tablet & Smaller Desktops */
+@media (max-width: 1100px) {
+    .main-content {
+        padding: 20px;
+    }
+
+    .header {
+        gap: 10px;
+    }
+
+    /* === HIDE TRENDING SONGS ON TABLET === */
+    .trending-songs {
+        display: none;
+        /* Hide trending */
+    }
+
+    .search-bar {
+        max-width: 300px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* Two columns */
+        gap: 25px;
+    }
+
+    /* Adjust grid columns for tablet if needed */
+    .artist-grid {
+        /* Example: 4 columns */
+        /* grid-template-columns: repeat(4, 1fr); */
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        /* Or keep auto-fill */
+        gap: 15px;
+    }
+
+    .artist-card-row {
+        width: 160px;
+    }
+}
+
+/* Tablet Portrait & Mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        /* Slide out sidebar */
+        /* Or use display: none; */
+        /* display: none; */
+    }
+
+    .main-content {
+        margin-left: 0;
+        /* Remove margin */
+        width: 100%;
+        /* Take full width */
+        padding: 15px;
+        /* Reduce padding */
+    }
+
+    .header {
+        flex-wrap: nowrap;
+        /* Ensure header stays on one line */
+        gap: 10px;
+        margin-bottom: 20px;
+        position: relative;
+        /* Needed for potential absolute positioning of icons if layout breaks */
+    }
+
+    .search-bar {
+        flex-grow: 1;
+        /* Take available space */
+        max-width: none;
+        /* Remove max width */
+        order: 1;
+        /* Search first */
+    }
+
+    .search-bar input {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .search-bar button {
+        padding: 0 15px;
+        font-size: 13px;
+    }
+
+    /* === HIDE DESKTOP HEADER ITEMS ON MOBILE === */
+    .language-selector,
+    .auth-buttons,
+    .trending-songs
+
+    /* Also ensure trending is hidden on mobile */
+        {
+        display: none;
+    }
+
+    /* === SHOW MOBILE HEADER ICONS === */
+    .header-right-mobile {
+        /* Create a container for mobile icons */
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        /* Space between icons */
+        order: 2;
+        /* Place after search */
+        margin-left: auto;
+        /* Push to the right */
+    }
+
+    .mobile-user-icon,
+    /* Placeholder class for user icon */
+    .mobile-notification-icon {
+        /* Placeholder class for notification icon */
+        color: #9ca3af;
+        font-size: 18px;
+        /* Adjust size as needed */
+        /* Add styles for your actual icons here */
+    }
+
+    /* Example using Font Awesome (ensure it's linked in your HTML)*/
+    .mobile-user-icon::before {
+        content: "\f007";
+        /* FA user icon */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+    }
+
+    .mobile-notification-icon::before {
+        content: "\f0f3";
+        /* FA bell icon */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+    }
+
+
+    .mobile-menu-toggle {
+        display: block;
+        /* Show hamburger */
+        background: none;
+        border: none;
+        color: #e0e0e0;
+        /* Make sure it's visible */
+        font-size: 22px;
+        /* Adjust size */
+        cursor: pointer;
+        padding: 0;
+        /* Remove default padding */
+        line-height: 1;
+        /* Ensure icon is centered */
+        /* order: 3; Place after other icons */
+    }
+
+    /* Example using Font Awesome for hamburger */
+    .mobile-menu-toggle::before {
+        content: "\f0c9";
+        /* FA bars icon */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+    }
+
+    /* Remove the ::after pseudo-element styling if using the separate mobile icons */
+    /* .header::after { display: none; } */
+
+
+    .section-header {
+        margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+        font-size: 16px;
+        /* Smaller titles */
+    }
+
+    .section-header a.view-more {
+        font-size: 12px;
+    }
+
+    .section-nav button {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+    }
+
+    /* === ARTIST LAYOUTS ON MOBILE === */
+    .artist-row-scroll {
+        /* Ensure the first section remains a scrollable row */
+        margin-left: 0;
+        margin-right: 0;
+        padding-bottom: 5px;
+        /* Styles for single visible item slider would go here if needed */
+    }
+
+    .artist-card-row {
+        width: 130px;
+        /* Smaller cards for scroll */
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .artist-grid {
+        /* Ensure the second section ("Top Artists") is a 2-column grid */
+        grid-template-columns: repeat(2, 1fr);
+        /* Explicitly two columns */
+        gap: 10px;
+        /* Reduced gap */
+    }
+
+    /* Adjust common card elements */
+    .artist-image-wrapper {
+        margin-bottom: 6px;
+    }
+
+    .artist-name {
+        font-size: 12px;
+    }
+
+    .artist-subtitle {
+        font-size: 10px;
+    }
+
+    .artist-info {
+        padding: 0 2px;
+    }
+
+
+    /* Footer adjustments */
+    .footer {
+        padding: 30px 0 15px 0;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        /* Single column */
+        padding: 0 15px;
+        gap: 20px;
+    }
+
+    /* ... (rest of footer mobile styles remain the same) ... */
+}
+
+/* Very Small Screens */
+@media (max-width: 400px) {
+    .main-content {
+        padding: 10px;
+    }
+
+    .header {
+        gap: 5px;
+        /* Further reduce gap */
+        flex-direction: row-reverse;
+        /* Switch order of elements on mobile */
+    }
+
+    .header-right-mobile {
+        gap: 10px;
+        /* Reduce gap between mobile icons */
+        order: -1;
+        /* Put mobile icons first */
+    }
+
+    .mobile-user-icon,
+    .mobile-notification-icon {
+        font-size: 16px;
+    }
+
+    .mobile-menu-toggle {
+        font-size: 20px;
+    }
+
+    .search-bar input {
+        padding: 6px 10px;
+    }
+
+    .search-bar button {
+        padding: 0 12px;
+    }
+
+    .section-header h2 {
+        font-size: 15px;
+    }
+
+    .artist-card-row {
+        width: 115px;
+        /* Even smaller */
+    }
+
+    .artist-grid {
+        gap: 8px;
+    }
+
+    .artist-name {
+        font-size: 11px;
+    }
+}
+
+/* Add this outside media queries */
+.header-right-mobile {
+    display: none;
+    /* Hide mobile icons by default */
+}
+
+/* The existing mobile media query will override this */
+@media (max-width: 400px) {
+
+    /* Very Small Screens */
+    .artist-card-row {
+        width: 115px;
+    }
+
+    .artist-grid {
+        gap: 10px;
+    }
+
+    .artist-name {
+        font-size: 12px;
+    }
+
+    /* Optionally hide arrows if screen too small */
+    /* .scroll-arrow { display: none; } */
+}
+
+/* ... rest of mobile styles ... */
+@media (max-width: 400px) {
+
+    /* Very Small Screens (1 picture) */
+    .artist-card-row {
+        width: 100%;
+        /* Full width for single picture */
+    }
+
+    .artist-grid {
+        grid-template-columns: 1fr;
+        /* Single column */
+        gap: 5px;
+    }
+
+    .artist-name {
+        font-size: 14px;
+        /* Slightly larger font */
+    }
+
+    /* Optionally hide arrows if screen too small */
+    /* .scroll-arrow { display: none; } */
+}
