@@ -31,13 +31,13 @@
                     <span class="icon">👤</span>
                     <span>Nghệ sĩ</span>
                 </a>
-                <a href="#">
+                <a href="./Genres.html">
                     <span class="icon">📜</span>
                     <span>Thể loại</span>
                 </a>
-                <a href="#">
+                <a href="./viewmoreManagement.html">
                     <span class="icon">📊</span>
-                    <span>Thống kê</span>
+                    <span>View more</span>
                 </a>
                 <a href="./users.html">
                     <span class="icon">⚙️</span>
@@ -58,27 +58,37 @@
         <main class="main-content">
             <h1>Quản Lý Nghệ Sĩ</h1>
             <!-- Featured Artists Section -->
-            <section class="featured-section">
+            <!-- <section class="featured-section">
                 <h2>Nghệ sĩ Nổi bật</h2>
                 <div class="featured-artists" id="featuredArtists"></div>
-            </section>
+            </section> -->
             <!-- Artist Form -->
-            <form id="artistForm">
+            <form id="artistForm" novalidate>
                 <div class="form-group">
                     <label>Tên nghệ sĩ</label>
                     <input type="text" id="name" required>
+                    <div class="error-message" id="name-error">Vui lòng nhập tên nghệ sĩ.</div>
                 </div>
                 <div class="form-group">
                     <label for="genre">Thể loại</label>
-                    <input type="text" id="genre" required>
+                    <select id="genre" required>
+                        <!-- <option value="">Chọn thể loại</option> -->
+                        <option value="Pop">Pop</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Hiphop">Hiphop</option>
+                        <option value="Jazz">Jazz</option>
+                    </select>
+                    <div class="error-message" id="genre-error">Vui lòng chọn thể loại.</div>
                 </div>
                 <div class="form-group">
                     <label for="birthYear">Năm sinh</label>
-                    <input type="number" id="birthYear" required>
+                    <input type="number" id="birthYear" required min="1900" max="2025">
+                    <div class="error-message" id="birthYear-error">Vui lòng nhập năm sinh hợp lệ (1900-2025).</div>
                 </div>
                 <div class="form-group">
                     <label for="image">URL ảnh</label>
-                    <input type="url" id="image">
+                    <input type="url" id="image" required>
+                    <div class="error-message" id="image-error">Vui lòng nhập URL hợp lệ.</div>
                 </div>
                 <div class="button-group">
                     <button type="submit" id="addButton">Thêm</button>

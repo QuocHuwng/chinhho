@@ -18,6 +18,96 @@ let editIndex = -1;
 const itemsPerPage = 8;
 let currentPage = 1;
 
+
+// Kiểm tra hợp lệ và hiển thị lỗi
+function validateInput(input) {
+    if (!input.value || !input.validity.valid) {
+        input.classList.add('invalid');
+        document.getElementById(`${input.id}-error`).style.display = 'block';
+        return false;
+    }
+    input.classList.remove('invalid');
+    document.getElementById(`${input.id}-error`).style.display = 'none';
+    return true;
+}
+
+// Xóa lỗi khi nhập hoặc chọn
+const inputs = [nameInput, genreInput, birthYearInput, imageInput];
+inputs.forEach(input => {
+    input.addEventListener('input', () => {
+        // Chỉ xóa lỗi nếu input hợp lệ và có giá trị
+        if (input.validity.valid && input.value) {
+            input.classList.remove('invalid');
+            document.getElementById(`${input.id}-error`).style.display = 'none';
+        }
+    });
+    // Xử lý riêng cho select (genre) khi thay đổi
+    if (input.tagName === 'SELECT') {
+        input.addEventListener('change', () => {
+            if (input.validity.valid && input.value) {
+                input.classList.remove('invalid');
+                document.getElementById(`${input.id}-error`).style.display = 'none';
+            }
+        });
+    }
+});
+
+// Thêm hoặc cập nhật nghệ sĩ
+artistForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Xóa lỗi cũ trước khi kiểm tra
+    inputs.forEach(input => {
+        input.classList.remove('invalid');
+        document.getElementById(`${input.id}-error`).style.display = 'none';
+    });
+
+    // Kiểm tra hợp lệ cho tất cả input
+    const isValid = inputs.every(input => validateInput(input));
+
+    if (isValid) {
+        const artist = {
+            name: nameInput.value,
+            genre: genreInput.value,
+            birthYear: birthYearInput.value,
+            image: imageInput.value,
+            isFeatured: editIndex !== -1 ? artists[editIndex].isFeatured : false
+        };
+
+        if (editIndex === -1) {
+            // Thêm mới
+            console.log('Thêm nghệ sĩ:', artist);
+            artists.push(artist);
+            showNotification('Thêm nghệ sĩ thành công!');
+        } else {
+            // Cập nhật
+            console.log('Cập nhật nghệ sĩ tại index', editIndex, 'với dữ liệu:', artist);
+            artists[editIndex] = artist;
+            showNotification('Cập nhật nghệ sĩ thành công!');
+            editIndex = -1;
+            addButton.classList.remove('hidden');
+            updateButton.classList.add('hidden');
+            cancelButton.classList.add('hidden');
+        }
+
+        saveArtists();
+        artistForm.reset();
+        imageInput.value = ''; // Reset input
+        inputs.forEach(input => {
+            input.classList.remove('invalid');
+            document.getElementById(`${input.id}-error`).style.display = 'none';
+        });
+    }
+});
+
+// Giả lập hàm showNotification và saveArtists (thay bằng code của bạn)
+function showNotification(message) {
+    console.log(message); // Thay bằng logic thông báo của bạn
+}
+
+function saveArtists() {
+    localStorage.setItem('artistss', JSON.stringify(artists));
+}
 // Hàm hiển thị thông báo
 function showNotification(message, type = 'success') {
     console.log('Hiển thị thông báo:', message, type);
@@ -31,24 +121,24 @@ function showNotification(message, type = 'success') {
 
 // Hiển thị danh sách nghệ sĩ nổi bật
 function renderFeaturedArtists() {
-    console.log('Hiển thị nghệ sĩ nổi bật:', artists.filter(a => a.isFeatured));
-    featuredArtistsDiv.innerHTML = '';
-    const featuredArtists = artists.filter(artist => artist.isFeatured);
-    if (featuredArtists.length === 0) {
-        featuredArtistsDiv.innerHTML = '<p>Chưa có nghệ sĩ nổi bật.</p>';
-        return;
-    }
-    featuredArtists.forEach(artist => {
-        const card = document.createElement('div');
-        card.className = 'featured-artist-card';
-        const imageSrc = artist.image || 'https://via.placeholder.com/100';
-        card.innerHTML = `
-                    <img src="${imageSrc}" alt="Ảnh nghệ sĩ">
-                    <h3>${artist.name}</h3>
-                    <p>${artist.genre}</p>
-                `;
-        featuredArtistsDiv.appendChild(card);
-    });
+    // console.log('Hiển thị nghệ sĩ nổi bật:', artists.filter(a => a.isFeatured));
+    // featuredArtistsDiv.innerHTML = '';
+    // const featuredArtists = artists.filter(artist => artist.isFeatured);
+    // if (featuredArtists.length === 0) {
+    //     featuredArtistsDiv.innerHTML = '<p>Chưa có nghệ sĩ nổi bật.</p>';
+    //     return;
+    // }
+    // featuredArtists.forEach(artist => {
+    //     const card = document.createElement('div');
+    //     card.className = 'featured-artist-card';
+    //     const imageSrc = artist.image || 'https://via.placeholder.com/100';
+    //     card.innerHTML = `
+    //                 <img src="${imageSrc}" alt="Ảnh nghệ sĩ">
+    //                 <h3>${artist.name}</h3>
+    //                 <p>${artist.genre}</p>
+    //             `;
+    //     featuredArtistsDiv.appendChild(card);
+    // });
 }
 
 // Hiển thị danh sách nghệ sĩ cho trang hiện tại
@@ -90,39 +180,6 @@ function saveArtists() {
     localStorage.setItem('artistss', JSON.stringify(artists));
     renderArtists();
 }
-
-// Thêm hoặc cập nhật nghệ sĩ
-artistForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const artist = {
-        name: nameInput.value,
-        genre: genreInput.value,
-        birthYear: birthYearInput.value,
-        image: imageInput.value || (editIndex !== -1 ? artists[editIndex].image : null),
-        isFeatured: editIndex !== -1 ? artists[editIndex].isFeatured : false
-    };
-
-    if (editIndex === -1) {
-        // Thêm mới
-        console.log('Thêm nghệ sĩ:', artist);
-        artists.push(artist);
-
-        showNotification('Thêm nghệ sĩ thành công!');
-    } else {
-        // Cập nhật
-        console.log('Cập nhật nghệ sĩ tại index', editIndex, 'với dữ liệu:', artist);
-        artists[editIndex] = artist;
-        showNotification('Cập nhật nghệ sĩ thành công!');
-        editIndex = -1;
-        addButton.classList.remove('hidden');
-        updateButton.classList.add('hidden');
-        cancelButton.classList.add('hidden');
-    }
-
-    saveArtists();
-    artistForm.reset();
-    imageInput.value = ''; // Reset input
-});
 
 // Sửa nghệ sĩ
 function editArtist(index) {

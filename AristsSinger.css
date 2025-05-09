@@ -458,3 +458,22 @@
 #cancelDelete {
     background-color: #ccc;
 }
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+    margin-top: 5px;
+}
+
+input.invalid+.error-message,
+select.invalid+.error-message {
+    display: block;
+    /* Hiển thị lỗi khi input hoặc select có class invalid */
+}
+
+input.invalid,
+select.invalid {
+    border: 1px solid red;
+    /* Viền đỏ cho input hoặc select sai */
+}
